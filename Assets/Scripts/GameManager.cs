@@ -8,16 +8,6 @@ public class GameManager : MonoBehaviour {
     void Awake() {
         Instance = this;
     }
-    void Start()
-    {
-        
-    }
-
-    
-    void Update()
-    {
-        
-    }
 
     public void AddMoney(int money) {
         bankAccount += money;

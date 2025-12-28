@@ -13,6 +13,6 @@ public class ComputerController : MonoBehaviour, IInteractable
     }
 
     public void Interact() {
-        Debug.Log("Computer Controller");
+        Debug.Log("Computer Opened");
     }
 }

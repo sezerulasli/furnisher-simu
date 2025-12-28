@@ -498,6 +498,7 @@ Transform:
   - {fileID: 1028840638}
   - {fileID: 967291025}
   - {fileID: 633448789}
+  - {fileID: 7581800759149318577}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418267782 stripped
@@ -960,6 +961,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FurnitureController
   color: {r: 1, g: 0, b: 0, a: 1}
   isFinished: 0
+--- !u!1 &1263795782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4513210801752231574, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+  m_PrefabInstance: {fileID: 7581800759149318576}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1263795787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263795782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7099be250054ea49b0c8063eabbb895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ComputerController
 --- !u!1 &1322249484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   rotationSpeed: 2
-  moveSpeed: 20
+  moveSpeed: 10
   playerCamera: {fileID: 271180051}
   rotationMax: 60
 --- !u!4 &1679839996
@@ -1788,6 +1806,87 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77ac11c5fc848e4489a429c94f80f140, type: 3}
+--- !u!1001 &7581800759149318576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 372268597}
+    m_Modifications:
+    - target: {fileID: 2680271325520251048, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_Name
+      value: PCMonitorStandPlane
+      objectReference: {fileID: 0}
+    - target: {fileID: 4513210801752231574, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_Name
+      value: PCScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292403847319500472, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_Name
+      value: PCTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7672879745285711488, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_Name
+      value: PCMonitorStand
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609813580294276841, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      propertyPath: m_Name
+      value: PCMonitorFrame
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4513210801752231574, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1263795787}
+  m_SourcePrefab: {fileID: 100100000, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+--- !u!4 &7581800759149318577 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7583566773913525515, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+  m_PrefabInstance: {fileID: 7581800759149318576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9066708503349864579
 PrefabInstance:
   m_ObjectHideFlags: 0
