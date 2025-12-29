@@ -31,8 +31,8 @@ public class FurnitureController : MonoBehaviour, IInteractable {
             Debug.Log("Color is wrong!");
         }
         else { 
-            furnitureManager.OnPiecePainted();
             isFinished = true;
+            furnitureManager.OnPiecePainted();
             Debug.Log("Painted true color."); 
 
         }

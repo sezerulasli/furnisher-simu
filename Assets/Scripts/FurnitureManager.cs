@@ -19,7 +19,6 @@ public class FurnitureManager : MonoBehaviour
             if (furnitureController[i].isFinished) {
                 checkCount += 1;
             }
-            Debug.Log(checkCount);
         }
         if (checkCount == furnitureController.Length) {
             return true;
@@ -36,9 +35,10 @@ public class FurnitureManager : MonoBehaviour
         QuestController questController = QuestController.Instance;
         if (CheckIfFinished() && isPaid == false) {
             isPaid = true;
+            NewQuestPrep();
             Pay();
             questController.CompleteQuest();
-            NewQuestPrep();
+            
         }
     }
 
