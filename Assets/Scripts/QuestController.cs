@@ -1,0 +1,35 @@
+using UnityEngine;
+
+public class QuestController : MonoBehaviour
+{
+    public static QuestController Instance { get; private set; }
+    public bool hasQuestActivated;
+    public Color currentQuestColor;
+    private string _currentQuestName;
+    private Color[] _questColors = {Color.red, Color.blue, Color.green, Color.black, Color.purple, Color.yellow, Color.white, Color.gray, Color.pink};
+    private string[] _questColorsName = { "Kırmızı", "Mavi", "Yeşil", "Siyah", "Mor", "Sarı", "Beyaz", "Gri", "Pembe" };
+    void Awake() {
+        Instance = this;
+    }
+    void Start() {
+    }
+    void Update()
+    {
+        
+    }
+
+    public void GenerateQuest() {
+        if (hasQuestActivated == false) {
+            var rangeNo = Random.Range(0, _questColors.Length);
+            currentQuestColor = _questColors[rangeNo];
+            _currentQuestName = _questColorsName[rangeNo];
+            hasQuestActivated = true;
+            Debug.Log("Yeni sipariş: " +  _currentQuestName);
+        }
+    }
+
+    public void CompleteQuest() {
+        hasQuestActivated = false;
+        Debug.Log("Quest Complete");
+    }
+}

@@ -5,8 +5,12 @@ public class FurnitureManager : MonoBehaviour
 {
     private FurnitureController[] furnitureController;
     public bool isPaid;
-    void Start() {
+
+    void Awake() {
         furnitureController = gameObject.GetComponentsInChildren<FurnitureController>();
+    }
+    void Start() {
+        
     }
 
     public bool CheckIfFinished() {
@@ -15,6 +19,7 @@ public class FurnitureManager : MonoBehaviour
             if (furnitureController[i].isFinished) {
                 checkCount += 1;
             }
+            Debug.Log(checkCount);
         }
         if (checkCount == furnitureController.Length) {
             return true;
@@ -28,9 +33,19 @@ public class FurnitureManager : MonoBehaviour
     }
 
     public void OnPiecePainted() {
+        QuestController questController = QuestController.Instance;
         if (CheckIfFinished() && isPaid == false) {
-            Pay();
             isPaid = true;
+            Pay();
+            questController.CompleteQuest();
+            NewQuestPrep();
         }
+    }
+
+    public void NewQuestPrep() {
+        for (int i = 0; i < furnitureController.Length; i++) {
+            furnitureController[i].isFinished = false;
+        }
+        isPaid = false;
     }
 }

@@ -1,8 +1,9 @@
 using UnityEngine;
 
 public class FurnitureController : MonoBehaviour, IInteractable {
-    [SerializeField] private Color color = Color.red;
+    [SerializeField] private Color color;
     private Color furnitureColor;
+    private Color colorQuest;
     private MeshRenderer furniturePart;
     private FurnitureManager furnitureManager;
     public bool isFinished;
@@ -24,13 +25,14 @@ public class FurnitureController : MonoBehaviour, IInteractable {
     }
     public void PaintFurniture(Color colorDye) {
         furniturePart.material.color = colorDye;
-        if (colorDye != color) {
+        colorQuest = QuestController.Instance.currentQuestColor;
+        if (colorDye != colorQuest) {
             isFinished = false;
             Debug.Log("Color is wrong!");
         }
         else { 
-            isFinished = true;
             furnitureManager.OnPiecePainted();
+            isFinished = true;
             Debug.Log("Painted true color."); 
 
         }
