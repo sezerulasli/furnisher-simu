@@ -15,7 +15,6 @@ public class ComputerController : MonoBehaviour, IInteractable {
     public void Interact() {
         QuestController questController = QuestController.Instance;
         if (questController.hasQuestActivated == false) {
-            QuestUI.SetActive(true);
             questController.GenerateQuest();
         }
         else {

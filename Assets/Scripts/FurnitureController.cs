@@ -1,8 +1,7 @@
 using UnityEngine;
 
 public class FurnitureController : MonoBehaviour, IInteractable {
-    [SerializeField] private Color color;
-    
+    private Color color;
     private Color furnitureColor;
     private Color colorQuest;
     private MeshRenderer furniturePart;
