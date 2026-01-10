@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 4846142565704825882}
   - component: {fileID: 7214941305914817882}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: PCMonitorStandPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,8 +382,9 @@ GameObject:
   - component: {fileID: 949151064563249552}
   - component: {fileID: 245141170439961556}
   - component: {fileID: 1322370617745971128}
+  - component: {fileID: 7670081114171545586}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: PCScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,6 +483,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7670081114171545586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513210801752231574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7099be250054ea49b0c8063eabbb895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ComputerController
+  QuestUI: {fileID: 0}
 --- !u!1 &5292403847319500472
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +689,7 @@ GameObject:
   - component: {fileID: 2780260266859050326}
   - component: {fileID: 2581797466795649482}
   m_Layer: 0
-  m_Name: Cylinder (1)
+  m_Name: PCMonitorStand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -899,7 +913,7 @@ GameObject:
   - component: {fileID: 8105747592264876002}
   - component: {fileID: 5040360758495932674}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: PCMonitorFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,8 +1,9 @@
 using UnityEngine;
+using System;
 
-public class QuestController : MonoBehaviour
-{
-    public static QuestController Instance { get; private set; }
+public class QuestController : MonoBehaviour {
+    public static QuestController Instance; // { get; private set; }
+
     public bool hasQuestActivated;
     public Color currentQuestColor;
     private string _currentQuestName;
@@ -10,21 +11,17 @@ public class QuestController : MonoBehaviour
     private string[] _questColorsName = { "Kırmızı", "Mavi", "Yeşil", "Siyah", "Mor", "Sarı", "Beyaz", "Gri", "Pembe" };
     void Awake() {
         Instance = this;
-    }
-    void Start() {
-    }
-    void Update()
-    {
-        
-    }
-
+        Debug.Log("Quest Controller Awake");
+    } 
+    
+    public event Action<string> OnNewQuest;
     public void GenerateQuest() {
         if (hasQuestActivated == false) {
-            var rangeNo = Random.Range(0, _questColors.Length);
+            var rangeNo = UnityEngine.Random.Range(0, _questColors.Length);
             currentQuestColor = _questColors[rangeNo];
             _currentQuestName = _questColorsName[rangeNo];
             hasQuestActivated = true;
-            Debug.Log("Yeni sipariş: " +  _currentQuestName);
+           OnNewQuest?.Invoke(_currentQuestName);
         }
     }
 
@@ -32,4 +29,5 @@ public class QuestController : MonoBehaviour
         hasQuestActivated = false;
         Debug.Log("Quest Complete");
     }
+    
 }

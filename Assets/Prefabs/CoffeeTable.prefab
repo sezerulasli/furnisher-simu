@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7271421164426394648}
   - component: {fileID: 2570057593494012885}
   - component: {fileID: 1656808647384404180}
+  - component: {fileID: 1665323179918410923}
   m_Layer: 0
   m_Name: CoffeeTablePlane
   m_TagString: Untagged
@@ -111,6 +112,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1665323179918410923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359226264278117299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8d584283db1a54d8d78058c9ff3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureController
+  color: {r: 1, g: 0, b: 0, a: 1}
+  isFinished: 0
+  hasQuestActivated: 0
 --- !u!1 &1055815689511070256
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +139,7 @@ GameObject:
   - component: {fileID: 5054404611252219432}
   - component: {fileID: 8424620530335590272}
   - component: {fileID: 9081556064311849816}
+  - component: {fileID: 7041333829653357793}
   m_Layer: 0
   m_Name: CoffeeTableLeg (2)
   m_TagString: Untagged
@@ -222,6 +239,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7041333829653357793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1055815689511070256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8d584283db1a54d8d78058c9ff3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureController
+  color: {r: 1, g: 0, b: 0, a: 1}
+  isFinished: 0
+  hasQuestActivated: 0
 --- !u!1 &2121510496678224954
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3423204083277550511}
+  - component: {fileID: 6995231424520514344}
   m_Layer: 0
   m_Name: CoffeeTable
   m_TagString: Untagged
@@ -258,6 +291,19 @@ Transform:
   - {fileID: 4572972648810807840}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6995231424520514344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121510496678224954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdf78bd8ba67154bbc9ad1171b5781b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureManager
+  isPaid: 0
 --- !u!1 &4474036674006698906
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +316,7 @@ GameObject:
   - component: {fileID: 604950350166019118}
   - component: {fileID: 642900537444445114}
   - component: {fileID: 5887689876693771547}
+  - component: {fileID: 2195770887365140913}
   m_Layer: 0
   m_Name: CoffeeTableLeg
   m_TagString: Untagged
@@ -369,6 +416,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2195770887365140913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4474036674006698906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8d584283db1a54d8d78058c9ff3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureController
+  color: {r: 1, g: 0, b: 0, a: 1}
+  isFinished: 0
+  hasQuestActivated: 0
 --- !u!1 &8307872355822728618
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +443,7 @@ GameObject:
   - component: {fileID: 1404838206545194887}
   - component: {fileID: 5786121928964342807}
   - component: {fileID: 2268061955412683755}
+  - component: {fileID: 8272003065361794793}
   m_Layer: 0
   m_Name: CoffeeTableLeg (3)
   m_TagString: Untagged
@@ -480,6 +543,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8272003065361794793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8307872355822728618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8d584283db1a54d8d78058c9ff3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureController
+  color: {r: 1, g: 0, b: 0, a: 1}
+  isFinished: 0
+  hasQuestActivated: 0
 --- !u!1 &8624196782031580531
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +570,7 @@ GameObject:
   - component: {fileID: 6665992860935755622}
   - component: {fileID: 9145022135215650420}
   - component: {fileID: 3907259201207146636}
+  - component: {fileID: 8194259019252706856}
   m_Layer: 0
   m_Name: CoffeeTableLeg (1)
   m_TagString: Untagged
@@ -509,7 +588,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.675, y: -0.675, z: -0.925}
-  m_LocalScale: {x: -0.15, y: 1.25, z: 0.15}
+  m_LocalScale: {x: 0.15, y: 1.25, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3423204083277550511}
@@ -591,3 +670,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8194259019252706856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8624196782031580531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8d584283db1a54d8d78058c9ff3ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureController
+  color: {r: 1, g: 0, b: 0, a: 1}
+  isFinished: 0
+  hasQuestActivated: 0
