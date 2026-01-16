@@ -14,7 +14,6 @@ public class NotificationUI : MonoBehaviour {
     }
     void OnEnable() {
         PaintCanController.OnChosenColor += UpdateText;
-        
     }
     
     IEnumerator ShowText() {

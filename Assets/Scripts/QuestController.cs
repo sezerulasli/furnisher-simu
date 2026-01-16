@@ -14,7 +14,7 @@ public class QuestController : MonoBehaviour {
         Debug.Log("Quest Controller Awake");
     } 
     
-    public event Action<string> OnNewQuest;
+    public static event Action<string> OnNewQuest;
     public void GenerateQuest() {
         if (hasQuestActivated == false) {
             var rangeNo = UnityEngine.Random.Range(0, _questColors.Length);

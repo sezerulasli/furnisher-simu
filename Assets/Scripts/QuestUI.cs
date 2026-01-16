@@ -3,27 +3,16 @@ using UnityEngine;
 using System;
 public class QuestUI : MonoBehaviour {
     
-    private TextMeshProUGUI questNameText;
-    private QuestController _questController;
-    void Start()
-    {
-        questNameText = gameObject.GetComponent<TextMeshProUGUI>();
-    }
+    [SerializeField] private TextMeshProUGUI questNameText;
     
     void UpdateText(string text) {
-        questNameText.text = "Boya: " + text;
+        questNameText.text = "Görev: " + text + " rengine boya.";
     }
     void OnEnable() {
-        _questController = QuestController.Instance;
-        if (_questController == null) {
-            Debug.LogError("QuestController.Instance NULL");
-            return; 
-        } 
-        _questController.OnNewQuest += UpdateText;
-        
+        QuestController.OnNewQuest += UpdateText;
     }
 
     void OnDisable() {
-        _questController.OnNewQuest -= UpdateText;
+        QuestController.OnNewQuest -= UpdateText;
     }
 }

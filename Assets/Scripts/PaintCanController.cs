@@ -6,15 +6,7 @@ public class PaintCanController : MonoBehaviour, IInteractable {
     [SerializeField] private Color chosenColor;
     [SerializeField] private string chColorName;
     // public static PaintCanController Instance;
-    
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
+
     public static event Action<string> OnChosenColor;
     public void Interact() {
         ITool currentTool = PlayerController.Instance.CurrentTool;

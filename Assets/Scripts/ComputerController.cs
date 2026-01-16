@@ -2,15 +2,6 @@ using TMPro;
 using UnityEngine;
 
 public class ComputerController : MonoBehaviour, IInteractable {
-    [SerializeField] private GameObject QuestUI;
-    void Start() {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     public void Interact() {
         QuestController questController = QuestController.Instance;
