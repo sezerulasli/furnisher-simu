@@ -10,11 +10,6 @@ public class QuestUI : MonoBehaviour {
         questNameText = gameObject.GetComponent<TextMeshProUGUI>();
     }
     
-    void Update()
-    {
-        
-    }
-
     void UpdateText(string text) {
         questNameText.text = "Boya: " + text;
     }

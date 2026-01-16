@@ -1,8 +1,12 @@
 using UnityEngine;
 using UnityEngine.Rendering.UI;
+using System;
 
 public class PaintCanController : MonoBehaviour, IInteractable {
     [SerializeField] private Color chosenColor;
+    [SerializeField] private string chColorName;
+    // public static PaintCanController Instance;
+    
     void Start()
     {
         
@@ -11,16 +15,16 @@ public class PaintCanController : MonoBehaviour, IInteractable {
     {
         
     }
-
+    public static event Action<string> OnChosenColor;
     public void Interact() {
         ITool currentTool = PlayerController.Instance.CurrentTool;
         PaintGun paintGun = currentTool as PaintGun;
         if (paintGun != null) {
-            Debug.Log("birseyler calisiyor mu");
+            OnChosenColor?.Invoke(chColorName);
             ChoosePaint(paintGun);
         }
         else {
-            Debug.Log("You must to hold a Paint Gun");
+            Debug.Log("Boya silahı tutmalısın");
         }
     }
 

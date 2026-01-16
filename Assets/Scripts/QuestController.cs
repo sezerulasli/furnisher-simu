@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 public class QuestController : MonoBehaviour {
-    public static QuestController Instance; // { get; private set; }
+    public static QuestController Instance; 
 
     public bool hasQuestActivated;
     public Color currentQuestColor;
