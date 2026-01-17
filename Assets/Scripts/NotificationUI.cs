@@ -5,25 +5,28 @@ using TMPro;
 
 public class NotificationUI : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI notificationText;
-    private PaintCanController _paintCanController;
 
     void UpdateText(string text) {
+        notificationText.text = text;
         notificationText.gameObject.SetActive(true);
-        notificationText.text = text + " Seçildi.";
+        StopAllCoroutines(); // Bir coroutine başladığında, 2. bir text'i etkilemesin diye her seferinde var olan coroutine'leri kapatıyorum.
         StartCoroutine(ShowText());
+        
     }
     void OnEnable() {
         PaintCanController.OnChosenColor += UpdateText;
+        ComputerController.OnQuestWarning += UpdateText;
     }
     
     IEnumerator ShowText() {
-        Debug.Log("oldu");
+        Debug.Log("Coroutine started");
         yield return new WaitForSeconds(2f);
         notificationText.gameObject.SetActive(false);
     }
 
     void OnDisable() {
         PaintCanController.OnChosenColor -= UpdateText;
+        ComputerController.OnQuestWarning -= UpdateText;
     }
     
 }

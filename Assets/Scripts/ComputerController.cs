@@ -1,7 +1,10 @@
 using TMPro;
 using UnityEngine;
+using System;
 
 public class ComputerController : MonoBehaviour, IInteractable {
+
+    public static event Action<string> OnQuestWarning;
 
     public void Interact() {
         QuestController questController = QuestController.Instance;
@@ -9,7 +12,8 @@ public class ComputerController : MonoBehaviour, IInteractable {
             questController.GenerateQuest();
         }
         else {
-            Debug.Log("You have an already ongoing quest !");
+            OnQuestWarning?.Invoke("Tamamlanmamış bir görevin var!");
+            Debug.Log("Zaten bir görevin var !");
         }
         Debug.Log("Computer Opened");
     }
