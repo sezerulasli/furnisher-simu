@@ -3,30 +3,38 @@ using System;
 using System.Collections;
 using TMPro;
 
-public class NotificationUI : MonoBehaviour {
+public class NotificationUI : MonoBehaviour
+{
     [SerializeField] private TextMeshProUGUI notificationText;
 
-    void UpdateText(string text) {
+    void UpdateText(string text)
+    {
         notificationText.text = text;
         notificationText.gameObject.SetActive(true);
         StopAllCoroutines(); // Bir coroutine başladığında, 2. bir text'i etkilemesin diye her seferinde var olan coroutine'leri kapatıyorum.
         StartCoroutine(ShowText());
-        
+
     }
-    void OnEnable() {
+    void OnEnable()
+    {
         PaintCanController.OnChosenColor += UpdateText;
+        PaintCanController.OnCanDrained += UpdateText;
         ComputerController.OnQuestWarning += UpdateText;
+
     }
-    
-    IEnumerator ShowText() {
+
+    IEnumerator ShowText()
+    {
         Debug.Log("Coroutine started");
         yield return new WaitForSeconds(2f);
         notificationText.gameObject.SetActive(false);
     }
 
-    void OnDisable() {
+    void OnDisable()
+    {
         PaintCanController.OnChosenColor -= UpdateText;
+        PaintCanController.OnCanDrained -= UpdateText;
         ComputerController.OnQuestWarning -= UpdateText;
     }
-    
+
 }
