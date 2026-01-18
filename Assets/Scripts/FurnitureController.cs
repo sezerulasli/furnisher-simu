@@ -1,6 +1,8 @@
 using UnityEngine;
+using System;
 
-public class FurnitureController : MonoBehaviour, IInteractable {
+public class FurnitureController : MonoBehaviour, IInteractable
+{
     private Color color;
     private Color furnitureColor;
     private Color colorQuest;
@@ -8,37 +10,45 @@ public class FurnitureController : MonoBehaviour, IInteractable {
     private FurnitureManager furnitureManager;
     public bool isFinished;
     public bool hasQuestActivated;
-    void Start() {
+    public static event Action<string> OnHandChecked;
+    void Start()
+    {
         furniturePart = gameObject.GetComponent<MeshRenderer>();
         furnitureManager = gameObject.GetComponentInParent<FurnitureManager>();
-        
+
     }
-    
-    public void Interact() {
+
+    public void Interact()
+    {
         ITool currentTool = PlayerController.Instance.CurrentTool;
-        QuestController questController = QuestController.Instance; 
+        QuestController questController = QuestController.Instance;
         hasQuestActivated = questController.hasQuestActivated;
         PaintGun paintGun = currentTool as PaintGun; // Oyuncunun elindeki tabanca PaintGun mı değil mi?
-        if (paintGun != null && hasQuestActivated) {
+        if (paintGun != null && hasQuestActivated)
+        {
             furnitureColor = paintGun.color;
             PaintFurniture(furnitureColor);
         }
-        else {
-            Debug.Log("You must to hold a Paint Gun");
+        else
+        {
+            OnHandChecked?.Invoke("Yeni bir görev almalısın.");
         }
     }
-    public void PaintFurniture(Color colorDye) {
+    public void PaintFurniture(Color colorDye)
+    {
         furniturePart.material.color = colorDye;
-        QuestController questController = QuestController.Instance; 
+        QuestController questController = QuestController.Instance;
         colorQuest = questController.currentQuestColor;
-        if (colorDye != colorQuest) {
+        if (colorDye != colorQuest)
+        {
             isFinished = false;
             Debug.Log("Color is wrong!");
         }
-        else { 
+        else
+        {
             isFinished = true;
             furnitureManager.OnPiecePainted();
-            Debug.Log("Painted true color."); 
+            Debug.Log("Painted true color.");
 
         }
     }

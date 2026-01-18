@@ -8,27 +8,29 @@ public class PaintCanController : MonoBehaviour, IInteractable
     [SerializeField] private string chColorName;
     [SerializeField] private int paintCanCapacity = 5;
     private int paintChooseCount = 0;
-    public static event Action<string> OnChosenColor;
-    public static event Action<string> OnCanDrained;
+    private int remainCanCap = 0;
+    public static event Action<string> OnChosenColor, OnCanDrained;
     public void Interact()
     {
         ITool currentTool = PlayerController.Instance.CurrentTool;
         PaintGun paintGun = currentTool as PaintGun;
         if (paintGun != null)
         {
-            OnChosenColor?.Invoke(chColorName + " seçildi.");
+            remainCanCap = paintCanCapacity - paintChooseCount;
+            OnChosenColor?.Invoke(chColorName + " seçildi. Kalan boya: " + (remainCanCap - 1));
             ChoosePaint(paintGun);
             paintChooseCount++;
             Debug.Log(paintChooseCount);
             if (paintChooseCount == paintCanCapacity)
             {
+                Destroy(gameObject.transform.parent.gameObject);  // ben kovaların dışında controlcüyü tuttuğum için tüm can için parent'i komple yok ediyorum.
                 Debug.Log(chColorName + " boya tükendi.");
                 OnCanDrained?.Invoke(chColorName + " boya tükendi.");
             }
         }
         else
         {
-            Debug.Log("Boya silahı tutmalısın");
+            Debug.Log("damn nigga.");
         }
     }
 

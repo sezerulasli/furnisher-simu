@@ -19,6 +19,7 @@ public class NotificationUI : MonoBehaviour
     {
         PaintCanController.OnChosenColor += UpdateText;
         PaintCanController.OnCanDrained += UpdateText;
+        FurnitureController.OnHandChecked += UpdateText;
         ComputerController.OnQuestWarning += UpdateText;
 
     }
@@ -34,6 +35,7 @@ public class NotificationUI : MonoBehaviour
     {
         PaintCanController.OnChosenColor -= UpdateText;
         PaintCanController.OnCanDrained -= UpdateText;
+        FurnitureController.OnHandChecked -= UpdateText;
         ComputerController.OnQuestWarning -= UpdateText;
     }
 
