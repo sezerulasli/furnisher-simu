@@ -7,6 +7,7 @@ public class NotificationUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI notificationText;
 
+
     void UpdateText(string text)
     {
         notificationText.text = text;
@@ -20,6 +21,7 @@ public class NotificationUI : MonoBehaviour
         PaintCanController.OnChosenColor += UpdateText;
         PaintCanController.OnCanDrained += UpdateText;
         FurnitureController.OnHandChecked += UpdateText;
+        FurnitureController.OnGunCapChecked += UpdateText;
         ComputerController.OnQuestWarning += UpdateText;
 
     }
@@ -36,6 +38,7 @@ public class NotificationUI : MonoBehaviour
         PaintCanController.OnChosenColor -= UpdateText;
         PaintCanController.OnCanDrained -= UpdateText;
         FurnitureController.OnHandChecked -= UpdateText;
+        FurnitureController.OnGunCapChecked -= UpdateText;
         ComputerController.OnQuestWarning -= UpdateText;
     }
 

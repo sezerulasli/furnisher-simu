@@ -10,7 +10,8 @@ public class FurnitureController : MonoBehaviour, IInteractable
     private FurnitureManager furnitureManager;
     public bool isFinished;
     public bool hasQuestActivated;
-    public static event Action<string> OnHandChecked;
+    public static event Action<string> OnHandChecked, OnGunCapChecked;
+    public static event Action<bool> OnFurniturePainted;
     void Start()
     {
         furniturePart = gameObject.GetComponent<MeshRenderer>();
@@ -24,10 +25,16 @@ public class FurnitureController : MonoBehaviour, IInteractable
         QuestController questController = QuestController.Instance;
         hasQuestActivated = questController.hasQuestActivated;
         PaintGun paintGun = currentTool as PaintGun; // Oyuncunun elindeki tabanca PaintGun mı değil mi?
-        if (paintGun != null && hasQuestActivated)
+        if (paintGun != null && paintGun.isDrained == false && hasQuestActivated)
         {
             furnitureColor = paintGun.color;
             PaintFurniture(furnitureColor);
+            OnFurniturePainted?.Invoke(true);
+
+        }
+        else if (paintGun != null && paintGun.isDrained == true)
+        {
+            OnGunCapChecked?.Invoke("Tabancada boya kalmadı.");
         }
         else
         {
@@ -39,6 +46,7 @@ public class FurnitureController : MonoBehaviour, IInteractable
         furniturePart.material.color = colorDye;
         QuestController questController = QuestController.Instance;
         colorQuest = questController.currentQuestColor;
+
         if (colorDye != colorQuest)
         {
             isFinished = false;
