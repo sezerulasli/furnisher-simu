@@ -2,7 +2,8 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     [SerializeField] private float rotationSpeed = 2.0f;
     [SerializeField] private float moveSpeed = 20.0f;
     [SerializeField] private Transform playerCamera;
@@ -12,7 +13,8 @@ public class PlayerController : MonoBehaviour {
     private float mouseAxisXC;
     public static PlayerController Instance { get; private set; }
     public ITool CurrentTool;
-    void Awake() {
+    void Awake()
+    {
         Instance = this;
     }
     void Start()  // her şey burada başladı.
@@ -20,33 +22,37 @@ public class PlayerController : MonoBehaviour {
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        CurrentTool = GetComponentInChildren<PaintGun>();
-        
+        CurrentTool = GetComponentInChildren<ITool>();
+
     }
     void Update() // Saniyede bilgisayarın ne kadar iyiyse o kadar kare oynatır.
     {
         PlayerCameraMove();
-        if (Input.GetMouseButtonDown(0)) {  
+        if (Input.GetMouseButtonDown(0))
+        {
             RaycastHit();
         }
-        
+
     }
 
-    void FixedUpdate() {  // Saniyede 50 kare oynatır bu yüzden motorsal fiziksel hareketler burada.
+    void FixedUpdate()
+    {  // Saniyede 50 kare oynatır bu yüzden motorsal fiziksel hareketler burada.
         PlayerMove(); //Karakter hareketi Rigidbody MovePosition içerdiği için FixedUpdate içerisine koydum.
     }
-    public void PlayerMove() {
-        
+    public void PlayerMove()
+    {
+
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
-        
+
         Vector3 movement = ((transform.forward * verticalInput) + (transform.right * horizontalInput)) * moveSpeed;
         playerRb.linearVelocity = movement;
     }
 
-    public void PlayerCameraMove() {
+    public void PlayerCameraMove()
+    {
         var mouseAxisX = Input.GetAxis("Mouse X");
-        var mouseAxisY = Input.GetAxis("Mouse Y") ;
+        var mouseAxisY = Input.GetAxis("Mouse Y");
         mouseAxisXC += mouseAxisX;
         // Yukarı aşağı bakma işlemleri
         playerCamera.localRotation = Quaternion.Euler(lookUpDown, 0f, 0f); // localRotation ile kameranın rotasyonunu derecelendirdim. Clamp ile yalnızca -60 ile 60 arasında rotate alabiliyor.
@@ -56,15 +62,26 @@ public class PlayerController : MonoBehaviour {
         // transform.Rotate(Vector3.up *  (rotationSpeed * mouseAxisX)); 
         playerRb.MoveRotation(Quaternion.Euler(0f, mouseAxisXC, 0f));
     }
-    
-    public void RaycastHit() {
+
+    public void RaycastHit()
+    {
         RaycastHit hit;
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit)) {
-            if (hit.collider.gameObject.TryGetComponent<IInteractable>(out var iinteractableObj)) { // TryGetComponent ile bool döndürüyorum (var mı yok mu kontrolü)
-                iinteractableObj.Interact();
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit))
+        {
+            if (CurrentTool != null)
+            {
+                CurrentTool.Use(hit.collider.gameObject);
             }
+            if (hit.collider.gameObject.TryGetComponent<IInteractable>(out var iinteractableObj))
+            { // TryGetComponent ile bool döndürüyorum (var mı yok mu kontrolü)
+                iinteractableObj.Interact();
+                return;
+            }
+
+
         }
-        else {
+        else
+        {
             Debug.Log("No Hit");
         }
     }

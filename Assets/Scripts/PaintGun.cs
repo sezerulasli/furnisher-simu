@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class PaintGun : MonoBehaviour, ITool
@@ -14,28 +15,34 @@ public class PaintGun : MonoBehaviour, ITool
 
     }
 
-    void OnEnable()
+    public void DyeDrain()
     {
-        FurnitureController.OnFurniturePainted += DyeDrain;
-    }
-    public void DyeDrain(bool isFurniturePainted)
-    {
-        if (isFurniturePainted)
+        Debug.Log(gunDyeSituation);
+        gunDyeSituation--;
+        if (gunDyeSituation == 0)
         {
-            Debug.Log(gunDyeSituation);
-            if (gunDyeSituation == 0)
-            {
-                isDrained = true;
-            }
-            gunDyeSituation--;
+            isDrained = true;
         }
-        return;
+
+    }
+    public void Use(GameObject targetObject)
+    {
+        if (targetObject.TryGetComponent<IPaintable>(out var paintableObject))
+        {
+            // Debug.Log("Obje görüldü");
+            Paint(paintableObject);
+        }
+    }
+    private void Paint(IPaintable paintableObject)
+    {
+        if (gunDyeSituation > 0)
+        {
+            paintableObject.Paint(color);
+            DyeDrain();
+        }
+
     }
 
-    void OnDisable()
-    {
-        FurnitureController.OnFurniturePainted -= DyeDrain;
-    }
 
 
 

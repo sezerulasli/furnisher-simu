@@ -1,63 +1,37 @@
 using UnityEngine;
 using System;
 
-public class FurnitureController : MonoBehaviour, IInteractable
+public class FurnitureController : MonoBehaviour, IInteractable, IPaintable
 {
     private Color color;
-    private Color furnitureColor;
-    private Color colorQuest;
+    public Color furnitureColor;
     private MeshRenderer furniturePart;
-    private FurnitureManager furnitureManager;
-    public bool isFinished;
-    public bool hasQuestActivated;
-    public static event Action<string> OnHandChecked, OnGunCapChecked;
-    public static event Action<bool> OnFurniturePainted;
+    public bool isPainted;
+    public event Action OnPainted;
     void Start()
     {
         furniturePart = gameObject.GetComponent<MeshRenderer>();
-        furnitureManager = gameObject.GetComponentInParent<FurnitureManager>();
 
     }
 
     public void Interact()
     {
-        ITool currentTool = PlayerController.Instance.CurrentTool;
-        QuestController questController = QuestController.Instance;
-        hasQuestActivated = questController.hasQuestActivated;
-        PaintGun paintGun = currentTool as PaintGun; // Oyuncunun elindeki tabanca PaintGun mı değil mi?
-        if (paintGun != null && paintGun.isDrained == false && hasQuestActivated)
-        {
-            furnitureColor = paintGun.color;
-            PaintFurniture(furnitureColor);
-            OnFurniturePainted?.Invoke(true);
 
-        }
-        else if (paintGun != null && paintGun.isDrained == true)
-        {
-            OnGunCapChecked?.Invoke("Tabancada boya kalmadı.");
-        }
-        else
-        {
-            OnHandChecked?.Invoke("Yeni bir görev almalısın.");
-        }
     }
+
+    public void Paint(Color color)
+    {
+        furnitureColor = color;
+        PaintFurniture(furnitureColor);
+    }
+
     public void PaintFurniture(Color colorDye)
     {
         furniturePart.material.color = colorDye;
-        QuestController questController = QuestController.Instance;
-        colorQuest = questController.currentQuestColor;
+        isPainted = true;
+        OnPainted?.Invoke();
+        Debug.Log("Painted color.");
 
-        if (colorDye != colorQuest)
-        {
-            isFinished = false;
-            Debug.Log("Color is wrong!");
-        }
-        else
-        {
-            isFinished = true;
-            furnitureManager.OnPiecePainted();
-            Debug.Log("Painted true color.");
-
-        }
     }
+
 }

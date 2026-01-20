@@ -1,51 +1,82 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class FurnitureManager : MonoBehaviour
 {
     private FurnitureController[] furnitureController;
     public bool isPaid;
-
-    void Awake() {
+    private Color firstPieceColor;
+    void Awake()
+    {
         furnitureController = gameObject.GetComponentsInChildren<FurnitureController>();
+        foreach (var part in furnitureController)
+        {
+            part.OnPainted += OnPainted;
+        }
     }
-    void Start() {
-        
-    }
+    void Start()
+    {
 
-    public bool CheckIfFinished() {
+    }
+    void OnEnable()
+    {
+
+    }
+    public bool CheckIfFinished()
+    {
         int checkCount = 0;
-        for (int i=0; i<furnitureController.Length; i++) {
-            if (furnitureController[i].isFinished) {
+        for (int i = 0; i < furnitureController.Length; i++)
+        {
+            if (furnitureController[i].isPainted)
+            {
                 checkCount += 1;
             }
         }
-        if (checkCount == furnitureController.Length) {
+        if (checkCount == furnitureController.Length)
+        {
             return true;
         }
         return false;
     }
 
-    public void Pay() { 
-        GameManager.Instance.AddMoney(100); 
-        Debug.Log("Current Money: " + GameManager.Instance.bankAccount);
+    public bool CheckColor()
+    {
+        int finalColor = 0;
+
+        for (int i = 0; i < furnitureController.Length; i++)
+        {
+            if (furnitureController[i].furnitureColor == firstPieceColor)
+            {
+                finalColor += 1;
+            }
+        }
+        if (finalColor == furnitureController.Length)
+        {
+            return true;
+        }
+        return false;
+
+    }
+    public void OnPainted()
+    {
+        firstPieceColor = furnitureController[0].furnitureColor;
+        if (CheckIfFinished() && CheckColor())
+        {
+            Debug.Log("tamamı boyandı renk:" + firstPieceColor);
+            // OnFinalColorChecked?.Invoke();
+        }
+
+
     }
 
-    public void OnPiecePainted() {
-        QuestController questController = QuestController.Instance;
-        if (CheckIfFinished() && isPaid == false) {
-            isPaid = true;
-            NewQuestPrep();
-            Pay();
-            questController.CompleteQuest();
-            
+    void OnDisable()
+    {
+        foreach (var part in furnitureController)
+        {
+            part.OnPainted -= OnPainted;
         }
     }
 
-    public void NewQuestPrep() {
-        for (int i = 0; i < furnitureController.Length; i++) {
-            furnitureController[i].isFinished = false;
-        }
-        isPaid = false;
-    }
 }
