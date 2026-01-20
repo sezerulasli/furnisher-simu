@@ -1,33 +1,57 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
-public class QuestController : MonoBehaviour {
-    public static QuestController Instance; 
-
+public class QuestController : MonoBehaviour
+{
+    public static QuestController Instance;
+    [SerializeField] private FurnitureManager furnitureManager;
+    [SerializeField] private List<QuestColorPair> questColors = new List<QuestColorPair>();
     public bool hasQuestActivated;
     public Color currentQuestColor;
     private string _currentQuestName;
-    private Color[] _questColors = {Color.red, Color.blue, Color.green, Color.black, Color.purple, Color.yellow, Color.white, Color.gray, Color.pink};
-    private string[] _questColorsName = { "Kırmızı", "Mavi", "Yeşil", "Siyah", "Mor", "Sarı", "Beyaz", "Gri", "Pembe" };
-    void Awake() {
+    void Awake()
+    {
         Instance = this;
-        Debug.Log("Quest Controller Awake");
-    } 
-    
-    public static event Action<string> OnNewQuest;
-    public void GenerateQuest() {
-        if (hasQuestActivated == false) {
-            var rangeNo = UnityEngine.Random.Range(0, _questColors.Length);
-            currentQuestColor = _questColors[rangeNo];
-            _currentQuestName = _questColorsName[rangeNo];
-            hasQuestActivated = true;
-           OnNewQuest?.Invoke(_currentQuestName);
-        }
     }
 
-    public void CompleteQuest() {
+    void OnEnable()
+    {
+        furnitureManager.OnFinalColorPainted += CheckPaintQuest;
+    }
+    public static event Action<string> OnNewQuest;
+    public void GenerateQuest()
+    {
+        if (hasQuestActivated == false)
+        {
+            var rangeNo = UnityEngine.Random.Range(0, questColors.Count);
+            currentQuestColor = questColors[rangeNo].Color;
+            _currentQuestName = questColors[rangeNo].ColorName;
+            hasQuestActivated = true;
+            OnNewQuest?.Invoke(_currentQuestName);
+        }
+    }
+    public void CheckPaintQuest(Color colorPainted)
+    {
+        if (colorPainted == currentQuestColor)
+        {
+            CompleteQuest();
+        }
+    }
+    public void CompleteQuest()
+    {
         hasQuestActivated = false;
         Debug.Log("Quest Complete");
     }
-    
+    void OnDisable()
+    {
+        furnitureManager.OnFinalColorPainted -= CheckPaintQuest;
+    }
+}
+
+[Serializable]
+public class QuestColorPair
+{
+    public Color Color;
+    public string ColorName;
 }

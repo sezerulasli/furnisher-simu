@@ -1958,6 +1958,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785d3df5bfd328b4786e22039672b194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestController
+  furnitureManager: {fileID: 937470696}
+  questColors:
+  - Color: {r: 1, g: 0, b: 0, a: 1}
+    ColorName: "K\u0131rm\u0131z\u0131"
+  - Color: {r: 0, g: 0, b: 1, a: 1}
+    ColorName: Mavi
+  - Color: {r: 0, g: 1, b: 0, a: 1}
+    ColorName: "Ye\u015Fil"
+  - Color: {r: 0, g: 0, b: 0, a: 0}
+    ColorName: Siyah
+  - Color: {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
+    ColorName: Mor
+  - Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    ColorName: "Sar\u0131"
+  - Color: {r: 1, g: 1, b: 1, a: 1}
+    ColorName: Beyaz
+  - Color: {r: 0.6, g: 0.6, b: 0.6, a: 1}
+    ColorName: Gri
+  - Color: {r: 1, g: 0.7529413, b: 0.7960785, a: 1}
+    ColorName: Pembe
   hasQuestActivated: 0
   currentQuestColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &369081406
@@ -3249,6 +3269,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 383962856516289401, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
   m_PrefabInstance: {fileID: 919296642}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &937470696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6995231424520514344, guid: 070686c26b701ad449d0066b16bb2bed, type: 3}
+  m_PrefabInstance: {fileID: 4322396145280345097}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdf78bd8ba67154bbc9ad1171b5781b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FurnitureManager
 --- !u!4 &967291025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3288944658009684208, guid: 77ac11c5fc848e4489a429c94f80f140, type: 3}

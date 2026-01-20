@@ -8,6 +8,8 @@ public class FurnitureManager : MonoBehaviour
     private FurnitureController[] furnitureController;
     public bool isPaid;
     private Color firstPieceColor;
+    public event Action<Color> OnFinalColorPainted;
+
     void Awake()
     {
         furnitureController = gameObject.GetComponentsInChildren<FurnitureController>();
@@ -65,12 +67,10 @@ public class FurnitureManager : MonoBehaviour
         if (CheckIfFinished() && CheckColor())
         {
             Debug.Log("tamamı boyandı renk:" + firstPieceColor);
-            // OnFinalColorChecked?.Invoke();
+            OnFinalColorPainted?.Invoke(firstPieceColor);
+
         }
-
-
     }
-
     void OnDisable()
     {
         foreach (var part in furnitureController)
