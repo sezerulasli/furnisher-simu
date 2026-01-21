@@ -19,9 +19,10 @@ public class FurnitureController : MonoBehaviour, IInteractable, IPaintable
 
     }
 
-    public void Paint(Color color)
+    public void BePainted(Color color)
     {
         furnitureColor = color;
+        Debug.Log("MOBİLYAYI BOYAMIŞAM GARDAŞ");
         PaintFurniture(furnitureColor);
     }
 

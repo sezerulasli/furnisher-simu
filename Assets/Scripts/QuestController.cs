@@ -4,22 +4,20 @@ using System.Collections.Generic;
 
 public class QuestController : MonoBehaviour
 {
-    public static QuestController Instance;
+
     [SerializeField] private FurnitureManager furnitureManager;
     [SerializeField] private List<QuestColorPair> questColors = new List<QuestColorPair>();
+    [SerializeField] private ComputerController computerController;
     public bool hasQuestActivated;
     public Color currentQuestColor;
     private string _currentQuestName;
-    void Awake()
-    {
-        Instance = this;
-    }
-
+    public event Action OnQuestDone;
     void OnEnable()
     {
         furnitureManager.OnFinalColorPainted += CheckPaintQuest;
+        computerController.OnScreenInteract += GenerateQuest;
     }
-    public static event Action<string> OnNewQuest;
+    public event Action<string> OnNewQuest;
     public void GenerateQuest()
     {
         if (hasQuestActivated == false)
@@ -36,6 +34,7 @@ public class QuestController : MonoBehaviour
         if (colorPainted == currentQuestColor)
         {
             CompleteQuest();
+            OnQuestDone?.Invoke();
         }
     }
     public void CompleteQuest()
@@ -46,6 +45,7 @@ public class QuestController : MonoBehaviour
     void OnDisable()
     {
         furnitureManager.OnFinalColorPainted -= CheckPaintQuest;
+        computerController.OnScreenInteract -= GenerateQuest;
     }
 }
 

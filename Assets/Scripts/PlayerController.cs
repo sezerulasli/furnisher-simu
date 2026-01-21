@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
+using System.Runtime.CompilerServices;
 
 public class PlayerController : MonoBehaviour
 {
@@ -66,19 +67,18 @@ public class PlayerController : MonoBehaviour
     public void RaycastHit()
     {
         RaycastHit hit;
+        bool ifToolUsed = false;
         if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit))
         {
             if (CurrentTool != null)
             {
-                CurrentTool.Use(hit.collider.gameObject);
+                ifToolUsed = CurrentTool.Use(hit.collider.gameObject);
             }
-            if (hit.collider.gameObject.TryGetComponent<IInteractable>(out var iinteractableObj))
+            if (ifToolUsed == false && hit.collider.gameObject.TryGetComponent<IInteractable>(out var interactableObj))
             { // TryGetComponent ile bool döndürüyorum (var mı yok mu kontrolü)
-                iinteractableObj.Interact();
+                interactableObj.Interact();  // burası şimdilik tool interaction anlamına da geliyor.
                 return;
             }
-
-
         }
         else
         {

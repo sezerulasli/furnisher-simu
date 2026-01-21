@@ -14,7 +14,6 @@ public class PaintGun : MonoBehaviour, ITool
         gunDyeSituation = gunDyeCap;
 
     }
-
     public void DyeDrain()
     {
         Debug.Log(gunDyeSituation);
@@ -25,25 +24,37 @@ public class PaintGun : MonoBehaviour, ITool
         }
 
     }
-    public void Use(GameObject targetObject)
+    public bool Use(GameObject targetObject)
     {
         if (targetObject.TryGetComponent<IPaintable>(out var paintableObject))
         {
-            // Debug.Log("Obje görüldü");
             Paint(paintableObject);
+            Debug.Log("MOBİLYA BOYADIM");
+            return true;
         }
+        if (targetObject.TryGetComponent<IColorSource>(out var colorSourceObject))
+        {
+            ChooseColor(colorSourceObject);
+            Debug.Log("KOVADAN BOYA ALDIM");
+            return true;
+        }
+        return false;
     }
     private void Paint(IPaintable paintableObject)
     {
         if (gunDyeSituation > 0)
         {
-            paintableObject.Paint(color);
+            paintableObject.BePainted(color);
+            Debug.Log("MOBİLYA BOYADIM 2");
             DyeDrain();
         }
 
     }
 
-
+    private void ChooseColor(IColorSource colorSourceObject)
+    {
+        color = colorSourceObject.GetColor();
+    }
 
 
 }

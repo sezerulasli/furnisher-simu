@@ -1978,6 +1978,7 @@ MonoBehaviour:
     ColorName: Gri
   - Color: {r: 1, g: 0.7529413, b: 0.7960785, a: 1}
     ColorName: Pembe
+  computerController: {fileID: 1424249238}
   hasQuestActivated: 0
   currentQuestColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &369081406
@@ -4153,6 +4154,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 25}
   m_SizeDelta: {x: 100, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1424249238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7670081114171545586, guid: 6917ee28ff15a864fb0d7869f105d7f0, type: 3}
+  m_PrefabInstance: {fileID: 7581800759149318576}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7099be250054ea49b0c8063eabbb895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ComputerController
 --- !u!43 &1511865294
 Mesh:
   m_ObjectHideFlags: 0
@@ -4837,6 +4849,7 @@ GameObject:
   - component: {fileID: 1698609198}
   - component: {fileID: 1698609197}
   - component: {fileID: 1698609196}
+  - component: {fileID: 1698609199}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -4856,6 +4869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371da7b726686894390da44f6887dee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestUI
+  questController: {fileID: 369081405}
   questNameText: {fileID: 847579134}
 --- !u!114 &1698609197
 MonoBehaviour:
@@ -4885,6 +4899,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1698609199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698609195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2055529a7b15148a68b3c4e6d862ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CashUI
+  questController: {fileID: 369081405}
+  cashText: {fileID: 1322249485}
 --- !u!1001 &1762586402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5604,6 +5632,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4051605652471934187, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
   m_PrefabInstance: {fileID: 9066708503349864579}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2036785661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+  m_PrefabInstance: {fileID: 1762586402}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87654e0fabfef354096ebda9900c6adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PaintCanController
 --- !u!43 &2119235863
 Mesh:
   m_ObjectHideFlags: 0
@@ -6108,6 +6147,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 271180051}
     m_Modifications:
+    - target: {fileID: 618318174260076246, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
+      propertyPath: paintCanController
+      value: 
+      objectReference: {fileID: 2036785661}
     - target: {fileID: 3763665624578197734, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
       propertyPath: m_Name
       value: PaintGun
