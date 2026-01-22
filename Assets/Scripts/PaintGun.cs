@@ -5,7 +5,7 @@ public class PaintGun : MonoBehaviour, ITool
 {
     public string ToolName { get; set; }
     public Color color;
-    public int gunDyeCap = 2;
+    public int gunDyeCap = 3;
     public int gunDyeSituation;
     public bool isDrained;
     void Start()
@@ -16,7 +16,6 @@ public class PaintGun : MonoBehaviour, ITool
     }
     public void DyeDrain()
     {
-        Debug.Log(gunDyeSituation);
         gunDyeSituation--;
         if (gunDyeSituation == 0)
         {
@@ -29,13 +28,11 @@ public class PaintGun : MonoBehaviour, ITool
         if (targetObject.TryGetComponent<IPaintable>(out var paintableObject))
         {
             Paint(paintableObject);
-            Debug.Log("MOBİLYA BOYADIM");
             return true;
         }
         if (targetObject.TryGetComponent<IColorSource>(out var colorSourceObject))
         {
             ChooseColor(colorSourceObject);
-            Debug.Log("KOVADAN BOYA ALDIM");
             return true;
         }
         return false;
@@ -45,7 +42,6 @@ public class PaintGun : MonoBehaviour, ITool
         if (gunDyeSituation > 0)
         {
             paintableObject.BePainted(color);
-            Debug.Log("MOBİLYA BOYADIM 2");
             DyeDrain();
         }
 
@@ -53,8 +49,13 @@ public class PaintGun : MonoBehaviour, ITool
 
     private void ChooseColor(IColorSource colorSourceObject)
     {
-        color = colorSourceObject.GetColor();
+        color = colorSourceObject.TakeColor();
+        RefillDye();
     }
 
+    private void RefillDye()
+    {
+        gunDyeSituation = gunDyeCap;
+    }
 
 }

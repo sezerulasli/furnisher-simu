@@ -6,9 +6,13 @@ using TMPro;
 public class NotificationUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI notificationText;
+    public static NotificationUI Instance { get; private set; }
 
-    /*
-    void UpdateText(string text)
+    void Awake()
+    {
+        Instance = this;
+    }
+    public void UpdateText(string text)
     {
         notificationText.text = text;
         notificationText.gameObject.SetActive(true);
@@ -16,24 +20,11 @@ public class NotificationUI : MonoBehaviour
         StartCoroutine(ShowText());
 
     }
-    void OnEnable()
-    {
-        PaintCanController.OnChosenColor += UpdateText;
-        PaintCanController.OnCanDrained += UpdateText;
-
-    }
 
     IEnumerator ShowText()
     {
-        Debug.Log("Coroutine started");
         yield return new WaitForSeconds(2f);
         notificationText.gameObject.SetActive(false);
     }
 
-    void OnDisable()
-    {
-        PaintCanController.OnChosenColor -= UpdateText;
-        PaintCanController.OnCanDrained -= UpdateText;
-    }
-*/
 }

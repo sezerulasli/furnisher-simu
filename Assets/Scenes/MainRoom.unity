@@ -1332,6 +1332,10 @@ PrefabInstance:
       propertyPath: chosenColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
       value: PaintCan (6)
@@ -1966,7 +1970,7 @@ MonoBehaviour:
     ColorName: Mavi
   - Color: {r: 0, g: 1, b: 0, a: 1}
     ColorName: "Ye\u015Fil"
-  - Color: {r: 0, g: 0, b: 0, a: 0}
+  - Color: {r: 0, g: 0, b: 0, a: 1}
     ColorName: Siyah
   - Color: {r: 0.627451, g: 0.1254902, b: 0.9411765, a: 1}
     ColorName: Mor
@@ -2328,6 +2332,10 @@ PrefabInstance:
       propertyPath: chosenColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
       value: PaintCan (1)
@@ -2448,6 +2456,10 @@ PrefabInstance:
     - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: chosenColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
@@ -3256,6 +3268,10 @@ PrefabInstance:
       propertyPath: chosenColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
       value: PaintCan (5)
@@ -3793,6 +3809,10 @@ PrefabInstance:
     - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: chosenColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
@@ -5025,6 +5045,10 @@ PrefabInstance:
       propertyPath: chosenColor.r
       value: 0.627451
       objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
       value: PaintCan (7)
@@ -5145,6 +5169,10 @@ PrefabInstance:
     - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: chosenColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
@@ -5914,6 +5942,10 @@ PrefabInstance:
       propertyPath: chColorName
       value: Mavi
       objectReference: {fileID: 0}
+    - target: {fileID: 8591388750528153443, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
+      propertyPath: paintCanCapacity
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8954793833638868010, guid: 7e57fde180413f04a9ab21a0304129a5, type: 3}
       propertyPath: m_Name
       value: PaintCan
@@ -6147,6 +6179,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 271180051}
     m_Modifications:
+    - target: {fileID: 618318174260076246, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
+      propertyPath: color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 618318174260076246, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
+      propertyPath: color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 618318174260076246, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
+      propertyPath: gunDyeCap
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 618318174260076246, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
+      propertyPath: gunDyeSituation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 618318174260076246, guid: 876e7b6497cf9d342b1331056db7c2d9, type: 3}
       propertyPath: paintCanController
       value: 

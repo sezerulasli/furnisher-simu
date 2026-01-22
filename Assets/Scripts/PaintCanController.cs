@@ -10,15 +10,14 @@ public class PaintCanController : MonoBehaviour, IInteractable, IColorSource
     [SerializeField] private int paintCanCapacity = 5;
     private int paintChooseCount = 0;
     private int remainCanCap = 0;
-    public event Action<Color> OnChosenColor;
-    public event Action<string> OnCanDrained;
     public void Interact()
     {
 
     }
 
-    public Color GetColor()
+    public Color TakeColor()
     {
+        CanDrain();
         return chosenColor;
     }
 
@@ -27,13 +26,11 @@ public class PaintCanController : MonoBehaviour, IInteractable, IColorSource
         if (paintChooseCount == paintCanCapacity)
         {
             Destroy(gameObject.transform.parent.gameObject);  // ben kovaların dışında controlcüyü tuttuğum için tüm can için parent'i komple yok ediyorum.
-            Debug.Log(chColorName + " boya tükendi.");
-            OnCanDrained?.Invoke(chColorName);
+            NotificationUI.Instance.UpdateText(chColorName + " tükendi.");
         }
         remainCanCap = paintCanCapacity - paintChooseCount;
-        OnChosenColor?.Invoke(chosenColor);
+        NotificationUI.Instance.UpdateText(chColorName + " seçildi. Kalan boya: " + (remainCanCap));
         paintChooseCount++;
-        Debug.Log(paintChooseCount);
     }
 
 }

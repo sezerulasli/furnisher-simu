@@ -66,7 +66,6 @@ public class FurnitureManager : MonoBehaviour
         firstPieceColor = furnitureController[0].furnitureColor;
         if (CheckIfFinished() && CheckColor())
         {
-            Debug.Log("tamamı boyandı renk:" + firstPieceColor);
             OnFinalColorPainted?.Invoke(firstPieceColor);
 
         }

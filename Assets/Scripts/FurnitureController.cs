@@ -22,7 +22,6 @@ public class FurnitureController : MonoBehaviour, IInteractable, IPaintable
     public void BePainted(Color color)
     {
         furnitureColor = color;
-        Debug.Log("MOBİLYAYI BOYAMIŞAM GARDAŞ");
         PaintFurniture(furnitureColor);
     }
 
@@ -31,7 +30,6 @@ public class FurnitureController : MonoBehaviour, IInteractable, IPaintable
         furniturePart.material.color = colorDye;
         isPainted = true;
         OnPainted?.Invoke();
-        Debug.Log("Painted color.");
 
     }
 
