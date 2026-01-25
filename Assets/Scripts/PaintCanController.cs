@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering.UI;
 using System;
 using System.Data;
+using System.Collections.Generic;
 
 public class PaintCanController : MonoBehaviour, IInteractable, IColorSource
 {
@@ -21,8 +22,14 @@ public class PaintCanController : MonoBehaviour, IInteractable, IColorSource
         return chosenColor;
     }
 
+    public string TakeColorName()
+    {
+        return chColorName;
+    }
+
     public void CanDrain()
     {
+        paintChooseCount++;
         if (paintChooseCount == paintCanCapacity)
         {
             Destroy(gameObject.transform.parent.gameObject);  // ben kovaların dışında controlcüyü tuttuğum için tüm can için parent'i komple yok ediyorum.
@@ -30,7 +37,7 @@ public class PaintCanController : MonoBehaviour, IInteractable, IColorSource
         }
         remainCanCap = paintCanCapacity - paintChooseCount;
         NotificationUI.Instance.UpdateText(chColorName + " seçildi. Kalan boya: " + (remainCanCap));
-        paintChooseCount++;
+
     }
 
 }

@@ -18,14 +18,7 @@ public class FurnitureManager : MonoBehaviour
             part.OnPainted += OnPainted;
         }
     }
-    void Start()
-    {
 
-    }
-    void OnEnable()
-    {
-
-    }
     public bool CheckIfFinished()
     {
         int checkCount = 0;

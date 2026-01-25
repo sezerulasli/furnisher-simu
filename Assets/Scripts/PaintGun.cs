@@ -1,3 +1,4 @@
+using System;
 using Mono.Cecil.Cil;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ public class PaintGun : MonoBehaviour, ITool
     public int gunDyeCap = 3;
     public int gunDyeSituation;
     public bool isDrained;
+    public string colorName;
+    public event Action<int> OnPaintShooted;
+    public event Action<string> OnColorSelected;
     void Start()
     {
         ToolName = "PaintGun";
@@ -33,8 +37,11 @@ public class PaintGun : MonoBehaviour, ITool
         if (targetObject.TryGetComponent<IColorSource>(out var colorSourceObject))
         {
             ChooseColor(colorSourceObject);
+            OnColorSelected?.Invoke(colorName);
+            OnPaintShooted?.Invoke(gunDyeSituation);
             return true;
         }
+
         return false;
     }
     private void Paint(IPaintable paintableObject)
@@ -43,6 +50,7 @@ public class PaintGun : MonoBehaviour, ITool
         {
             paintableObject.BePainted(color);
             DyeDrain();
+            OnPaintShooted?.Invoke(gunDyeSituation);
         }
 
     }
@@ -50,6 +58,7 @@ public class PaintGun : MonoBehaviour, ITool
     private void ChooseColor(IColorSource colorSourceObject)
     {
         color = colorSourceObject.TakeColor();
+        colorName = colorSourceObject.TakeColorName();
         RefillDye();
     }
 

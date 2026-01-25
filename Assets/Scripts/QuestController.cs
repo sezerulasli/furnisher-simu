@@ -31,7 +31,7 @@ public class QuestController : MonoBehaviour
     }
     public void CheckPaintQuest(Color colorPainted)
     {
-        if (colorPainted == currentQuestColor)
+        if (colorPainted == currentQuestColor && hasQuestActivated)
         {
             CompleteQuest();
             OnQuestDone?.Invoke();
