@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "furnisher-simu.sln"
+    "dotnet.defaultSolution": "furnisher-simu.sln",
+    "dotnet.preferCSharpExtension": true
 }

@@ -60,7 +60,6 @@ public class FurnitureManager : MonoBehaviour
         if (CheckIfFinished() && CheckColor())
         {
             OnFinalColorPainted?.Invoke(firstPieceColor);
-
         }
     }
     void OnDisable()

@@ -12,11 +12,11 @@ public class QuestUI : MonoBehaviour
     }
     void OnEnable()
     {
-        questController.OnNewQuest += UpdateText;
+        questController.OnNewQuestColor += UpdateText;
     }
 
     void OnDisable()
     {
-        questController.OnNewQuest -= UpdateText;
+        questController.OnNewQuestColor -= UpdateText;
     }
 }
