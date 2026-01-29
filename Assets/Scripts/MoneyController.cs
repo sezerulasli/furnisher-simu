@@ -1,10 +1,15 @@
+using System;
 using UnityEngine;
 
 public class MoneyController : MonoBehaviour
 {
+    private int currentMoney;
+    public event Action<int> OnMoneyChanged;
 
-    private void PayMoney()
+    public void PayMoney()
     {
-
+        currentMoney += 100;
+        OnMoneyChanged?.Invoke(currentMoney);
     }
+
 }

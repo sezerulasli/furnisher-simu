@@ -3,11 +3,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public float bankAccount { get; private set; }
-    public static GameManager Instance { get; private set; }
-    public TextMeshProUGUI MoneyText;
-    void Awake()
+    [SerializeField] QuestController questController;
+    [SerializeField] MoneyController moneyController;
+    [SerializeField] ComputerController computerController;
+    void OnEnable()
     {
-        Instance = this;
+        questController.OnQuestDone += moneyController.PayMoney;
+        computerController.OnScreenInteract += questController.GenerateQuest;
+    }
+    void OnDisable()
+    {
+        questController.OnQuestDone -= moneyController.PayMoney;
+        computerController.OnScreenInteract -= questController.GenerateQuest;
     }
 }

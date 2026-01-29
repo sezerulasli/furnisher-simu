@@ -7,15 +7,10 @@ public class QuestController : MonoBehaviour
 
     [SerializeField] private FurnitureManager furnitureManager;
     [SerializeField] private List<QuestColorPair> questColors = new List<QuestColorPair>();
-    [SerializeField] private ComputerController computerController;
     public bool hasQuestActivated;
     public Color currentQuestColor;
     private string _currentQuestColorName;
     public event Action OnQuestDone;
-    void OnEnable()
-    {
-        computerController.OnScreenInteract += GenerateQuest;
-    }
     public event Action<string> OnNewQuestColor;
     public event Action OnNewQuest;
     public void GenerateQuest()
@@ -47,8 +42,11 @@ public class QuestController : MonoBehaviour
     }
     void OnDisable()
     {
-        furnitureManager.OnFinalColorPainted -= CheckPaintQuest;
-        computerController.OnScreenInteract -= GenerateQuest;
+        if (furnitureManager != null)
+        {
+            furnitureManager.OnFinalColorPainted -= CheckPaintQuest;
+        }
+
     }
 
     public void RegisterFurniture(FurnitureManager furnitureManager)

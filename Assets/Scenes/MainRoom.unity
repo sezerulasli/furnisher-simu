@@ -1998,7 +1998,6 @@ MonoBehaviour:
     ColorName: Gri
   - Color: {r: 1, g: 0.7529413, b: 0.7960785, a: 1}
     ColorName: Pembe
-  computerController: {fileID: 1424249238}
   hasQuestActivated: 0
   currentQuestColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &369081406
@@ -2073,6 +2072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 430592553}
   - component: {fileID: 430592554}
+  - component: {fileID: 430592555}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -2107,7 +2107,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e22a39456317484483eba2064df7a20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  MoneyText: {fileID: 1322249485}
+  questController: {fileID: 369081405}
+  moneyController: {fileID: 430592555}
+  computerController: {fileID: 1424249238}
+--- !u!114 &430592555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430592552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e580ac7a6acbe74ba157b368135b127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoneyController
 --- !u!1 &477342398
 GameObject:
   m_ObjectHideFlags: 0
@@ -5115,7 +5129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2055529a7b15148a68b3c4e6d862ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CashUI
-  questController: {fileID: 369081405}
+  moneyController: {fileID: 430592555}
   cashText: {fileID: 1322249485}
 --- !u!114 &1698609200
 MonoBehaviour:

@@ -10,6 +10,4 @@ public class ComputerController : MonoBehaviour, IInteractable
         OnScreenInteract?.Invoke();
     }
 
-
-
 }

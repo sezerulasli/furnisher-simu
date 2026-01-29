@@ -3,21 +3,20 @@ using System;
 using TMPro;
 public class CashUI : MonoBehaviour
 {
-    [SerializeField] private QuestController questController;
+    [SerializeField] private MoneyController moneyController;
     [SerializeField] private TextMeshProUGUI cashText;
-    private int moneyCash;
+
     void OnEnable()
     {
-        questController.OnQuestDone += UpdateText;
+        moneyController.OnMoneyChanged += UpdateText;
     }
     void OnDisable()
     {
-        questController.OnQuestDone -= UpdateText;
+        moneyController.OnMoneyChanged -= UpdateText;
     }
 
-    void UpdateText()
+    void UpdateText(int currentMoney)
     {
-        moneyCash += 100;
-        cashText.text = "Cash: " + moneyCash + "$";
+        cashText.text = "Cash: " + currentMoney + "$";
     }
 }
