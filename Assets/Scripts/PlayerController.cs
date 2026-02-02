@@ -44,7 +44,11 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {  // Saniyede 50 kare oynatır bu yüzden motorsal fiziksel hareketler burada.
-        PlayerMove();
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            PlayerMove();
+        }
+
         //Karakter hareketi Rigidbody MovePosition içerdiği için FixedUpdate içerisine koydum.
     }
     public void PlayerMove()

@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private QuestController questController;
     [SerializeField] private GameObject furnitureForSpawn;
     [SerializeField] private GameObject envParent;
-    private Vector3 furnitureLocation;
-    [SerializeField] private QuestController questController;
+    [SerializeField] private Transform furnitureSpawnPoint;
+
     private GameObject newFurniture;
 
     void Start()
     {
-        furnitureLocation = new Vector3(-4.15f, 1.7f, 0.6f);
+        //furnitureLocation = new Vector3(-4.15f, 1.7f, 0.6f);
     }
 
     void OnEnable()
@@ -22,7 +23,7 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnFurniture()
     {
-        newFurniture = Instantiate(furnitureForSpawn, furnitureLocation, Quaternion.identity, envParent.transform);
+        newFurniture = Instantiate(furnitureForSpawn, furnitureSpawnPoint.position, Quaternion.identity, envParent.transform);
         questController.RegisterFurniture(newFurniture.GetComponent<FurnitureManager>());
     }
 

@@ -19,18 +19,20 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        float mouseAxisX = Input.GetAxis("Mouse X");
-        float mouseAxisY = Input.GetAxis("Mouse Y");
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            float mouseAxisX = Input.GetAxis("Mouse X");
+            float mouseAxisY = Input.GetAxis("Mouse Y");
 
-        mouseAxisXC += mouseAxisX;
+            mouseAxisXC += mouseAxisX;
 
-        lookUpDown -= mouseAxisY * rotationSpeed;
-        lookUpDown = Mathf.Clamp(lookUpDown, -rotationMax, rotationMax);
+            lookUpDown -= mouseAxisY * rotationSpeed;
+            lookUpDown = Mathf.Clamp(lookUpDown, -rotationMax, rotationMax);
 
-        player.rotation = Quaternion.Euler(0f, mouseAxisXC, 0f);
+            player.rotation = Quaternion.Euler(0f, mouseAxisXC, 0f);
 
-        transform.rotation = Quaternion.Euler(lookUpDown, mouseAxisXC, 0f);
-
+            transform.rotation = Quaternion.Euler(lookUpDown, mouseAxisXC, 0f);
+        }
     }
 
     void LateUpdate()
