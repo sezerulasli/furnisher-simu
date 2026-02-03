@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b527f1c64a43fdc45beef7b88787af94, type: 3}
+  m_Name: YellowPaintCan
+  m_EditorClassIdentifier: Assembly-CSharp::PaintCanData
+  paintCanName: "Sar\u0131"
+  paintCanImage: {fileID: 21300000, guid: 14ef536d0db10f446b6b13a768962774, type: 3}
+  paintCanPB: {fileID: 8954793833638868010, guid: bdb66d958e8e2b34782610fb273d4b61, type: 3}

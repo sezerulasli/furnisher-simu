@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
+        if (EventSystem.current.IsPointerOverGameObject()) // imleç bir ui objesi üzerinde mi kontrolü.. raycast'i engellemek adına.
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit();
@@ -63,7 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
         bool ifToolUsed = false;
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactableLayer))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, Mathf.Infinity, interactableLayer))
         {
             if (CurrentTool != null)
             {
