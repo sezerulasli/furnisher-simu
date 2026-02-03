@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     {
         questController.OnQuestDone += moneyController.PayMoney;
         computerInteractUI.OnQuestBtnClicked += questController.GenerateQuest;
+
     }
     void OnDisable()
     {

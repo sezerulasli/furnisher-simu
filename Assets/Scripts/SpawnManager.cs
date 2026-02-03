@@ -1,22 +1,26 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private QuestController questController;
+    [SerializeField] private OrderPanelUI orderPanelUI;
     [SerializeField] private GameObject furnitureForSpawn;
     [SerializeField] private GameObject envParent;
     [SerializeField] private Transform furnitureSpawnPoint;
+    [SerializeField] private Transform paintCanSpawnPoint;
 
     private GameObject newFurniture;
 
     void Start()
     {
-        //furnitureLocation = new Vector3(-4.15f, 1.7f, 0.6f);
+
     }
 
     void OnEnable()
     {
+        orderPanelUI.OnPaintCanBought += SpawnPaintCan;
         questController.OnQuestDone += DestroyFurniture;
         questController.OnNewQuest += SpawnFurniture;
     }
@@ -27,13 +31,20 @@ public class SpawnManager : MonoBehaviour
         questController.RegisterFurniture(newFurniture.GetComponent<FurnitureManager>());
     }
 
+    void SpawnPaintCan(GameObject paintCanSpawned)
+    {
+        Instantiate(paintCanSpawned, paintCanSpawnPoint.position, Quaternion.identity, envParent.transform);
+    }
+
     void DestroyFurniture()
     {
         Destroy(newFurniture);
     }
 
+
     void OnDisable()
     {
+        orderPanelUI.OnPaintCanBought -= SpawnPaintCan;
         questController.OnQuestDone -= DestroyFurniture;
         questController.OnNewQuest -= SpawnFurniture;
     }

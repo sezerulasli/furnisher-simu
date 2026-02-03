@@ -2160,6 +2160,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PinkPaintCan
       objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: fc92ffa7c887caa448ac01fe9512446c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3007,6 +3011,7 @@ Transform:
   - {fileID: 800256709}
   - {fileID: 3040801061110714503}
   - {fileID: 901849151}
+  - {fileID: 965376290}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &407952451
@@ -3619,9 +3624,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   questController: {fileID: 369081405}
+  orderPanelUI: {fileID: 1403137520}
   furnitureForSpawn: {fileID: 2121510496678224954, guid: 070686c26b701ad449d0066b16bb2bed, type: 3}
   envParent: {fileID: 372268596}
   furnitureSpawnPoint: {fileID: 901849151}
+  paintCanSpawnPoint: {fileID: 965376290}
 --- !u!4 &538070063
 Transform:
   m_ObjectHideFlags: 0
@@ -3721,6 +3728,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowPaintCan
       objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: bdb66d958e8e2b34782610fb273d4b61, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3814,6 +3825,10 @@ PrefabInstance:
     - target: {fileID: 8954793833638868010, guid: a90237ab262ce2544b1fa34578c57dc7, type: 3}
       propertyPath: m_Name
       value: BlackPaintCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: a90237ab262ce2544b1fa34578c57dc7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5042,6 +5057,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhitePaintCan
       objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: 2606b95b951077c43a74bb11993bca3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5052,6 +5071,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 383962856516289401, guid: 2606b95b951077c43a74bb11993bca3f, type: 3}
   m_PrefabInstance: {fileID: 919296642}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &965376289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965376290}
+  m_Layer: 0
+  m_Name: PaintCanSpawnLoc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965376290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965376289}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.537, y: 1.26, z: 4.022}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 372268597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &967291025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3288944658009684208, guid: 77ac11c5fc848e4489a429c94f80f140, type: 3}
@@ -5934,6 +5984,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedPaintCan
       objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: 7bcbfcecf43385941a61c5f23ba0591e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6657,6 +6711,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 589aed64f8e35d344846f84dfffce686, type: 2}
   paintCanImage: {fileID: 554887991}
   exitButton: {fileID: 1008780955}
+  buyButton: {fileID: 194295972}
+  moneyController: {fileID: 430592555}
 --- !u!1 &1431091790
 GameObject:
   m_ObjectHideFlags: 0
@@ -8074,6 +8130,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurplePaintCan
       objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: a2aefedadef57dc40ac894de4567ab50, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8162,6 +8222,10 @@ PrefabInstance:
     - target: {fileID: 8954793833638868010, guid: b848c43fddc48904993f2fd4c42a4880, type: 3}
       propertyPath: m_Name
       value: GreenPaintCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: b848c43fddc48904993f2fd4c42a4880, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9234,6 +9298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrayPaintCan
       objectReference: {fileID: 0}
+    - target: {fileID: 9197845465365743582, guid: d830d24a60a0f0346938f8d1e09d5d11, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9322,6 +9390,10 @@ PrefabInstance:
     - target: {fileID: 8954793833638868010, guid: 4c5c063de10511d469416a039e9f8284, type: 3}
       propertyPath: m_Name
       value: BluePaintCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954793833638868010, guid: 4c5c063de10511d469416a039e9f8284, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
