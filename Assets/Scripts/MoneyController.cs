@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class MoneyController : MonoBehaviour
 {
-    private int currentMoney;
+    private int currentMoney = 100;
     public event Action<int> OnMoneyChanged;
 
+    void Start()
+    {
+        OnMoneyChanged?.Invoke(currentMoney);
+    }
 
     public void PayMoney()
     {

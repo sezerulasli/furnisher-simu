@@ -9,10 +9,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject furnitureForSpawn;
     [SerializeField] private GameObject envParent;
     [SerializeField] private Transform furnitureSpawnPoint;
-    [SerializeField] private Transform paintCanSpawnPoint;
+    [SerializeField] private List<Transform> paintCanSpawnPoint;
 
     private GameObject newFurniture;
-
+    public int rangeNo;
     void Start()
     {
 
@@ -33,8 +33,14 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnPaintCan(GameObject paintCanSpawned)
     {
-        Instantiate(paintCanSpawned, paintCanSpawnPoint.position, Quaternion.identity, envParent.transform);
+        if (rangeNo != paintCanSpawnPoint.Count)
+        {
+            rangeNo += 1;
+            Instantiate(paintCanSpawned, paintCanSpawnPoint[rangeNo].position, Quaternion.identity, envParent.transform);
+        }
+
     }
+
 
     void DestroyFurniture()
     {
