@@ -68,5 +68,9 @@ public class OrderPanelUI : MonoBehaviour
             GameObject paintCanPB = paintCans[index].paintCanPB;
             OnPaintCanBought?.Invoke(paintCanPB);
         }
+        else
+        {
+            NotificationUI.Instance.UpdateText("Bütçen yetersiz !");
+        }
     }
 }
