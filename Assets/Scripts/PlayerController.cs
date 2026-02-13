@@ -3,6 +3,8 @@ using System;
 using UnityEngine.InputSystem;
 using System.Runtime.CompilerServices;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,9 +12,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform playerCamera;
 
     private Rigidbody playerRb;
-
+    private KeyCode toolKey;
     public static PlayerController Instance { get; private set; }
+    [SerializeField] private List<GameObject> allTools;
     public ITool CurrentTool;
+
     [SerializeField] private LayerMask interactableLayer;
 
     float horizontalInput;
@@ -27,8 +31,7 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        CurrentTool = playerCamera.GetComponentInChildren<ITool>();
-
+        SelectTool(0);
     }
     void Update() // Saniyede bilgisayarın ne kadar iyiyse o kadar kare oynatır.
     {
@@ -44,6 +47,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit();
+        }
+
+        if (Input.GetKeyDown("1"))
+        {
+            SelectTool(0);
+
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            SelectTool(1);
         }
 
     }
@@ -62,6 +75,23 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = ((transform.forward * verticalInput) + (transform.right * horizontalInput)) * moveSpeed;
         playerRb.linearVelocity = movement;
+
+    }
+
+    public void SelectTool(int index)
+    {
+        for (int i = 0; i < allTools.Count; i++)
+        {
+            if (index == i)
+            {
+                allTools[i].SetActive(true);
+                CurrentTool = allTools[index].GetComponent<ITool>();
+            }
+            else
+            {
+                allTools[i].SetActive(false);
+            }
+        }
 
     }
 

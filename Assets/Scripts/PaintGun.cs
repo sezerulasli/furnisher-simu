@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class PaintGun : MonoBehaviour, ITool
@@ -11,12 +12,20 @@ public class PaintGun : MonoBehaviour, ITool
     public string colorName;
     public event Action<int> OnPaintShooted;
     public event Action<string> OnColorSelected;
+    [SerializeField] private GameObject paintGunInfo;
+
     void Start()
     {
         ToolName = "PaintGun";
         gunDyeSituation = gunDyeCap;
 
     }
+
+    void OnEnable()
+    {
+        paintGunInfo.SetActive(true);
+    }
+
     public void DyeDrain()
     {
         gunDyeSituation--;
@@ -64,6 +73,11 @@ public class PaintGun : MonoBehaviour, ITool
     private void RefillDye()
     {
         gunDyeSituation = gunDyeCap;
+    }
+
+    void OnDisable()
+    {
+        paintGunInfo.SetActive(false);
     }
 
 }
