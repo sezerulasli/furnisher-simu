@@ -10,13 +10,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 20.0f;
     [SerializeField] private Transform playerCamera;
-
+    [SerializeField] private ToolManager toolManager;
     private Rigidbody playerRb;
-    private KeyCode toolKey;
     public static PlayerController Instance { get; private set; }
-    [SerializeField] private List<GameObject> allTools;
     public ITool CurrentTool;
-
     [SerializeField] private LayerMask interactableLayer;
 
     float horizontalInput;
@@ -31,7 +28,8 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SelectTool(0);
+
+        CurrentTool = toolManager.SelectTool(0);
     }
     void Update() // Saniyede bilgisayarın ne kadar iyiyse o kadar kare oynatır.
     {
@@ -46,17 +44,17 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit();
+            PerformRaycast();
         }
 
         if (Input.GetKeyDown("1"))
         {
-            SelectTool(0);
+            CurrentTool = toolManager.SelectTool(0);
 
         }
         else if (Input.GetKeyDown("2"))
         {
-            SelectTool(1);
+            CurrentTool = toolManager.SelectTool(1);
         }
 
     }
@@ -78,24 +76,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void SelectTool(int index)
-    {
-        for (int i = 0; i < allTools.Count; i++)
-        {
-            if (index == i)
-            {
-                allTools[i].SetActive(true);
-                CurrentTool = allTools[index].GetComponent<ITool>();
-            }
-            else
-            {
-                allTools[i].SetActive(false);
-            }
-        }
 
-    }
 
-    public void RaycastHit()
+    public void PerformRaycast()
     {
         RaycastHit hit;
         bool ifToolUsed = false;

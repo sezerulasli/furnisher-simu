@@ -29,7 +29,6 @@ public class FurnitureController : MonoBehaviour, IInteractable, IPaintable
 
     public void RemovePaint()
     {
-        Debug.Log("çalıştım daoyğlu");
         furniturePart.material.color = originalColor;
         isPainted = false;
     }
